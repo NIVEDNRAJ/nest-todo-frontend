@@ -20,12 +20,6 @@
     align-items: center;
     gap: 12px;
 
-    .brand-icon {
-      color: var(--primary-color);
-      font-size: 32px;
-      width: 32px;
-      height: 32px;
-    }
 
     h1 {
       font-size: 24px;
@@ -101,6 +95,9 @@
       position: absolute;
       left: 16px;
       color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .search-input {
@@ -192,7 +189,7 @@
 
 .todo-card-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
 
   .btn-checkbox {
@@ -200,10 +197,13 @@
     border: none;
     cursor: pointer;
     color: #000000;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    padding-top: 2px;
+    justify-content: center;
+    padding: 0;
     transition: opacity 0.15s ease;
+    width: 24px;
+    height: 24px;
 
     &:hover {
       opacity: 0.7;
@@ -213,6 +213,9 @@
       font-size: 24px;
       width: 24px;
       height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
@@ -241,7 +244,7 @@
   margin-top: 8px;
 
   .todo-date {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
     font-size: 12px;
@@ -251,6 +254,9 @@
       font-size: 14px;
       width: 14px;
       height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
@@ -265,11 +271,12 @@
       cursor: pointer;
       width: 32px;
       height: 32px;
-      border-radius: 8px;
-      display: flex;
+      border-radius: 4px;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       transition: all 0.2s ease;
+      padding: 0;
 
       &:hover {
         background: #000000;
@@ -285,6 +292,9 @@
         font-size: 18px;
         width: 18px;
         height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }
@@ -375,7 +385,7 @@
 
     .filters {
       justify-content: center;
-      
+
       button {
         flex: 1;
       }
