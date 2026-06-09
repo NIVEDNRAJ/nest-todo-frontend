@@ -2,19 +2,19 @@
 @import '@angular/material/prebuilt-themes/azure-blue.css';
 
 :root {
-  --bg-gradient: linear-gradient(135deg, #0a0c10 0%, #030406 100%);
-  --card-bg: rgba(23, 28, 41, 0.55);
-  --card-border: rgba(255, 255, 255, 0.07);
-  --primary-color: #6366f1;
-  --primary-hover: #4f46e5;
-  --accent-color: #10b981;
-  --danger-color: #ef4444;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #475569;
-  --input-bg: rgba(10, 12, 18, 0.7);
-  --glass-blur: blur(20px);
-  --shadow-premium: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+  --bg-gradient: #ffffff;
+  --card-bg: #ffffff;
+  --card-border: #000000;
+  --primary-color: #000000;
+  --primary-hover: #333333;
+  --accent-color: #000000;
+  --danger-color: #000000;
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --text-muted: #666666;
+  --input-bg: #ffffff;
+  --glass-blur: none;
+  --shadow-premium: none;
 }
 
 * {
@@ -31,30 +31,29 @@ body {
   overflow-x: hidden;
 }
 
-/* Glassmorphism Utility Classes */
+/* Minimal Panels and Cards */
 .glass-panel {
   background: var(--card-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--card-border);
-  border-radius: 20px;
-  box-shadow: var(--shadow-premium);
+  border-radius: 4px;
+  box-shadow: none;
 }
 
 .glass-input {
   background: var(--input-bg);
   border: 1px solid var(--card-border);
-  border-radius: 12px;
+  border-radius: 4px;
   color: var(--text-primary);
-  padding: 14px 18px;
+  padding: 12px 16px;
   outline: none;
   font-size: 15px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s ease;
   font-family: inherit;
 
   &:focus {
+    border-width: 2px;
+    padding: 11px 15px; /* Adjust padding to keep height same when border becomes 2px */
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
   }
 
   &::placeholder {
@@ -63,69 +62,76 @@ body {
 }
 
 .btn-premium {
-  background: linear-gradient(135deg, var(--primary-color) 0%, #4f46e5 100%);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 14px 28px;
+  background: var(--primary-color);
+  color: #ffffff;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  padding: 12px 24px;
   font-weight: 600;
   font-size: 15px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
+  transition: all 0.15s ease;
   font-family: inherit;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
-    background: linear-gradient(135deg, #4f46e5 0%, #3b33b3 100%);
+    background: #ffffff;
+    color: #000000;
+    border-color: #000000;
   }
 
   &:active {
-    transform: translateY(0);
+    background: #e5e5e5;
   }
 
   &:disabled {
-    background: var(--text-muted);
+    background: #e5e5e5;
+    border-color: #cccccc;
+    color: #999999;
     cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
   }
 }
 
 .btn-secondary {
-  background: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 14px 28px;
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  padding: 12px 24px;
   font-weight: 600;
   font-size: 15px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.15s ease;
   font-family: inherit;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: var(--text-secondary);
+    background: #000000;
+    color: #ffffff;
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
+  background: #ffffff;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  background: #000000;
+  border-radius: 0px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+  background: #333333;
+}
+
+::ng-deep mat-spinner circle {
+  stroke: #000000 !important;
+}
+
+.btn-premium ::ng-deep mat-spinner circle {
+  stroke: #ffffff !important;
 }

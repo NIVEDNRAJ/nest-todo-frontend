@@ -39,8 +39,17 @@ export class RegisterComponent {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(100)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required]]
+    }, {
+      validators: this.passwordMatchValidator
     });
+  }
+
+  passwordMatchValidator(form: FormGroup) {
+    const password = form.get('password')?.value;
+    const confirmPassword = form.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
   onSubmit(): void {
@@ -51,7 +60,8 @@ export class RegisterComponent {
     this.isLoading.set(true);
     this.errorMessage.set(null);
 
-    this.authService.register(this.registerForm.value).subscribe({
+    const { name, email, password } = this.registerForm.value;
+    this.authService.register({ name, email, password }).subscribe({
       next: () => {
         this.isLoading.set(false);
         this.router.navigate(['/dashboard']);
