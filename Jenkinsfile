@@ -17,7 +17,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh "docker build --no-cache -t ${IMAGE_NAME}:latest -t ${IMAGE_NAME}:${BUILD_NUMBER} ."
+                bat "docker build --no-cache -t ${IMAGE_NAME}:latest -t ${IMAGE_NAME}:${BUILD_NUMBER} ."
             }
         }
 
@@ -25,18 +25,18 @@ pipeline {
             steps {
                 script {
                     // Ensure Docker network exists
-                    sh "docker network create ${NETWORK_NAME} || true"
+                    bat "docker network create ${NETWORK_NAME} 2>nul || ver >nul"
                     
                     // Stop and remove existing container if running
-                    sh "docker stop ${CONTAINER_NAME} || true"
-                    sh "docker rm ${CONTAINER_NAME} || true"
+                    bat "docker stop ${CONTAINER_NAME} 2>nul || ver >nul"
+                    bat "docker rm ${CONTAINER_NAME} 2>nul || ver >nul"
                     
-                    // Launch new container
-                    sh """
-                        docker run -d \
-                            --name ${CONTAINER_NAME} \
-                            --network ${NETWORK_NAME} \
-                            -p ${PORT_MAPPING} \
+                    // Launch new container using Windows Batch line continuation
+                    bat """
+                        docker run -d ^
+                            --name ${CONTAINER_NAME} ^
+                            --network ${NETWORK_NAME} ^
+                            -p ${PORT_MAPPING} ^
                             ${IMAGE_NAME}:latest
                     """
                 }
