@@ -1,11 +1,9 @@
 <div class="auth-container">
   <div class="auth-card glass-panel">
     <div class="auth-header">
-      <mat-icon class="brand-icon">playlist_add_check</mat-icon>
       <h2>Create Account</h2>
       <p class="subtitle">Join us to start organizing your life</p>
-    </div>
-
+      </div>
     @if (errorMessage()) {
       <div class="error-banner">
         <mat-icon>error_outline</mat-icon>
@@ -21,7 +19,6 @@
           type="text" 
           formControlName="name" 
           class="glass-input" 
-          placeholder="John Doe"
           required
         />
         @if (registerForm.get('name')?.touched && registerForm.get('name')?.errors?.['required']) {
@@ -38,8 +35,7 @@
           id="email" 
           type="email" 
           formControlName="email" 
-          class="glass-input" 
-          placeholder="name@example.com"
+          class="glass-input"
           required
         />
         @if (registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['required']) {
@@ -61,13 +57,6 @@
             placeholder="••••••••"
             required
           />
-          <button 
-            type="button" 
-            class="toggle-password" 
-            (click)="hidePassword.set(!hidePassword())"
-          >
-            <mat-icon>{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
-          </button>
         </div>
         @if (registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['required']) {
           <span class="validation-error">Password is required</span>
